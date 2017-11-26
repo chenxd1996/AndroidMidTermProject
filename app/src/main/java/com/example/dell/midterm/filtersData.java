@@ -83,22 +83,17 @@ public class filtersData {
         switch (type) {
             case first_char_filter:
                 return filters.get("first_char_filter");
-                break;
             case native_place_modern_filter:
                 return filters.get("native_place_modern_filter");
-                break;
             case native_place_ancient_filter:
                 return filters.get("native_place_ancient_filter");
-                break;
             case age_filter:
                 return filters.get("age_filter");
-                break;
             case sex_filter:
                 return filters.get("sex_filter");
-                break;
             case camp_filter:
                 return filters.get("camp_filter");
-                break;
         }
+        return null;
     }
 }
