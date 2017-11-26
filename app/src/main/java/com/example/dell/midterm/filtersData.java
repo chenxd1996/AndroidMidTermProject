@@ -11,13 +11,14 @@ import java.util.Map;
 public class filtersData {
     private Map<String, ArrayList<String>> filters = new HashMap<>();
     private static filtersData instance;
+    private HashMap<filtersData.filterType, String> filters_selected = new HashMap<>();
 
     private filtersData() {
         this.init();
     }
 
     public enum filterType {first_char_filter, native_place_modern_filter, native_place_ancient_filter,
-        camp_filter, age_filter, sex_filter}
+        camp_filter, age_filter, sex_filter, name_filter}
 
     public static filtersData getInstance() {
         if (filtersData.instance == null) {
@@ -95,5 +96,13 @@ public class filtersData {
                 return filters.get("camp_filter");
         }
         return null;
+    }
+
+    public HashMap<filtersData.filterType, String> getFiltersSelected() {
+        return this.filters_selected;
+    }
+
+    public void setFiltersSelected(HashMap<filtersData.filterType, String> filtersSelected) {
+        this.filters_selected = filtersSelected;
     }
 }

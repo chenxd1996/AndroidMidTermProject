@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dell.midterm">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".addPerson" />
+        <activity android:name=".person_detail" />
+        <activity android:name=".updatePerson" />
+        <activity android:name=".create_person" />
+        <activity android:name=".show_result" />
     </application>
 
 </manifest>

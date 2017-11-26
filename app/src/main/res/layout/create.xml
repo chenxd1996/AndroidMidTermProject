@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/add_pic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/pic"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="上传人物图片"
+        app:layout_constraintTop_toBottomOf="@id/pic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/add_pic_label"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="姓名："
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_pic_label"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/name_label"/>
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id = "@+id/name"
+        android:hint="请输入人物姓名"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintLeft_toRightOf="@id/name_label"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/name_label" />
+
+    <EditText
+        app:layout_constraintTop_toTopOf="@+id/input_first"
+        android:id = "@+id/first"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="输入人物首字母"
+        android:inputType="text"
+        android:textSize="20dp"
+        />
+    <Spinner
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/input_first"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/input_sex"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/sex"/>
+
+    <Spinner
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/input_sex"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/input_shili"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/shili"/>
+
+    <Spinner
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/input_shili"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/input_nowplace"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/nowplace"/>
+    <Spinner
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/input_nowplace"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/input_oldplace"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/oldplace"/>
+    <Spinner
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/input_oldplace"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/input_life"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/life"/>
+
+
+    <android.support.design.widget.TextInputLayout
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id = "@+id/input_des"
+        android:layout_height="25dp"
+        android:layout_width="200dp"
+
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/input_life"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            app:layout_constraintTop_toTopOf="@+id/input_des"
+            android:id = "@+id/des"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:hint="输入人物描述"
+            android:inputType="text"
+            android:textSize="20dp"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/commit"
+        app:layout_constraintTop_toBottomOf="@+id/input_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="提交"
+        />
+</android.support.constraint.ConstraintLayout>
