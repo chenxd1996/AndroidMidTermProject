@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/profile"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:background="@mipmap/caocao"/>
+
+    <TextView
+        android:id="@+id/name1"
+        android:textSize="25sp"
+        android:textColor="#078721"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/profile"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="曹操" />
+    <TextView
+        android:id="@+id/name2"
+        android:textSize="20sp"
+        android:textColor="@color/colorBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/name1"
+        app:layout_constraintBottom_toTopOf="@+id/describe"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="7dp"
+        android:text="曹操 (cáo-cāo)" />
+    <TextView
+        android:id="@+id/describe"
+        android:textSize="15sp"
+        android:textColor="@color/colorBlack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/profile"
+        app:layout_constraintTop_toBottomOf="@id/name1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="男  史实人物  字：孟德  生卒(155-220)  籍贯：豫州沛国谯(安徽亳州市亳县)" />
+</android.support.constraint.ConstraintLayout>
