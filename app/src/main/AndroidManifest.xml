@@ -19,7 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".person_detail" />
-        <activity android:name=".updatePerson" />
         <activity android:name=".create_person" />
         <activity android:name=".show_result" />
     </application>
