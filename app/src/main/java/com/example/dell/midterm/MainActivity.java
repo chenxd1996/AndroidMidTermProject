@@ -17,8 +17,6 @@ import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.idescout.sql.SqlScoutServer;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
