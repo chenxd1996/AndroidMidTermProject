@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -16,13 +17,15 @@ import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.idescout.sql.SqlScoutServer;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class MainActivity extends AppCompatActivity {
     HashMap<filtersData.filterType, String> filters_selected = new HashMap<>();
-
+    private database db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,10 +75,25 @@ public class MainActivity extends AppCompatActivity {
                 String name = et.getText().toString();
                 filters_selected.put(filtersData.filterType.name_filter, name);
                 filtersData.getInstance().setFiltersSelected(filters_selected);
-                Intent intent = new Intent(MainActivity.this, person_detail.class);
+                Intent intent = new Intent(MainActivity.this, show_result.class);
                 startActivity(intent);
             }
         });
+
+        db = new database(this);
+        Cursor cursor = db.getReadableDatabase().rawQuery("select count(*) from " + database.TABLE_NAME, null);
+        while (cursor.moveToNext()) {
+            int count = cursor.getInt(0);
+            if (count == 0) {
+                for (int i = 0; i < 10; i++) {
+                    String name = Character.toString((char)((int)'A' + i));
+                    db.myinsert(name, "男", name.charAt(0) + "", "魏",
+                            "北京", "荆州", 50 + i, "路人" + name, null);
+                }
+            }
+        }
+        cursor.close();
+        db.close();
 
     }
 

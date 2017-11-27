@@ -7,10 +7,193 @@
     tools:context="com.example.dell.midterm.person_detail">
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/no_image"
+        android:layout_height="120dp"
+        android:src="@mipmap/add_pic"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/pic"
+        android:id="@+id/pic"/>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="姓名："
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pic"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/name_label"/>
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id = "@+id/name"
+        android:hint="请输入人物姓名"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintLeft_toRightOf="@id/name_label"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/name_label" />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_label"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="首字母："
+        android:textSize="16sp"
+        android:id="@+id/first_char_filter_label"
+        />
+    <EditText
+        android:id="@+id/first"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="输入人物首字母"
+        android:inputType="text"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/first_char_filter_label"
+        app:layout_constraintLeft_toRightOf="@id/first_char_filter_label"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="10dp"
+        />
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/first_char_filter_label"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="性别："
+        android:textSize="16sp"
+        android:id="@+id/sex_label"
+        />
+    <Spinner
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/sex_label"
+        android:id="@+id/input_sex"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/sex"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sex_label"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="阵营："
+        android:textSize="16sp"
+        android:id="@+id/camp_label"
+        />
+    <Spinner
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/camp_label"
+        android:id="@+id/input_shili"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/shili"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/camp_label"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="现代籍贯："
+        android:textSize="16sp"
+        android:id="@+id/modern_label"
+        />
+    <Spinner
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/modern_label"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/input_nowplace"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/nowplace"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/modern_label"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="古代籍贯："
+        android:textSize="16sp"
+        android:id="@+id/ancient_label"
+        />
+    <Spinner
+        android:layout_marginTop="20dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/ancient_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/input_oldplace"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/oldplace"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ancient_label"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="寿命："
+        android:textSize="16sp"
+        android:id="@+id/age_label"
+        />
+    <Spinner
+        android:layout_marginTop="20dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/age_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/input_life"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/life"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/age_label"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="人物描述："
+        android:textSize="16sp"
+        android:id="@+id/des_label"
+        />
+
+    <EditText
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/des_label"
+        app:layout_constraintLeft_toRightOf="@id/des_label"
+        android:id = "@+id/des"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:hint="输入人物描述"
+        android:inputType="text"
+        android:textSize="18sp"
+        android:layout_marginRight="10dp"
+        />
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/commit"
+        app:layout_constraintTop_toBottomOf="@+id/des_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="修改"
         />
 </android.support.constraint.ConstraintLayout>

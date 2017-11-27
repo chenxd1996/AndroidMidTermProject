@@ -18,7 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".addPerson" />
         <activity android:name=".person_detail" />
         <activity android:name=".updatePerson" />
         <activity android:name=".create_person" />

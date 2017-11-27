@@ -31,11 +31,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 public class database extends SQLiteOpenHelper{
-    private static final String DB_NAME = "mysql";
-    private static final String TABLE_NAME = "mytable";
+    private static final String DB_NAME = "testsql1";
+    public static final String TABLE_NAME = "Mytable2";
     private static final int DB_VERSION = 3;
+    private SQLiteDatabase db;
     private Context mcontext;
-    public  database(Context context) {
+    public database(Context context) {
         super(context, DB_NAME,null, DB_VERSION);
         mcontext = context;
     }
@@ -44,38 +45,47 @@ public class database extends SQLiteOpenHelper{
 
         //创建表
         //id,姓名，性别，首字母，势力，现在籍贯，古代籍贯，寿命，文字描述
-        String todo = "create table if not exists mytable(name text primary key, sex text , first_char text," +
+        String todo = "create table if not exists " + TABLE_NAME + " (name text primary key, sex text , first_char text," +
                 "shili text, now_place text, old_place text, life INT , description text, picture text)";
+        // String todo = "drop table mytable";
         sqLiteDatabase.execSQL(todo);
     }
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int il) {
-
+        db = sqLiteDatabase;
     }
 
     public void myinsert( String name ,String sex, String first_char, String shili,
                   String now_place , String old_place, int life , String description, String picture){
-        SQLiteDatabase db = getWritableDatabase();
+        db = getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("name", name);
-        cv.put("sex", sex);
-        cv.put("first_char", first_char);
-        cv.put("shili", shili);
-        cv.put("name", name);
-        cv.put("now_place", now_place);
-        cv.put("old_place", old_place);
+        if (name != null)
+            cv.put("name", name);
+        if (sex != null)
+            cv.put("sex", sex);
+        if (first_char != null)
+            cv.put("first_char", first_char);
+        if (shili != null)
+            cv.put("shili", shili);
+        if (now_place != null)
+            cv.put("now_place", now_place);
+        if (old_place != null)
+            cv.put("old_place", old_place);
         cv.put("life", life);
-        cv.put("description", description);
-        cv.put("picture", picture);
+        if (description != null)
+            cv.put("description", description);
+        if (picture != null);
+            cv.put("picture", picture);
         db.insert(TABLE_NAME, null, cv);
         db.close();
     }
     public void myupdate( String old_name,String name ,String sex, String first_char, String shili,
                           String now_place , String old_place, int life , String description, String picture){
-        SQLiteDatabase db = getWritableDatabase();
+        db = getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("name", name);
-        cv.put("sex", sex);
+        if (sex != null)
+            cv.put("sex", sex);
         cv.put("first_char", first_char);
         cv.put("shili", shili);
         cv.put("name", name);
@@ -91,7 +101,7 @@ public class database extends SQLiteOpenHelper{
     }
 
     public void deleteDB(String name) {
-        SQLiteDatabase db = getWritableDatabase();
+        db = getWritableDatabase();
         String whereClause = "name=?";
         String[] whereArgs = {name};
 
@@ -100,58 +110,91 @@ public class database extends SQLiteOpenHelper{
 
     }
     public ArrayList<Person> myfind(HashMap<filtersData.filterType, String> filters) {
-        SQLiteDatabase db = getWritableDatabase();
-        String query = "select * from mytable where ";
+        db = getWritableDatabase();
+        String query = "select * from " + TABLE_NAME+ " where ";
         ArrayList<Person> result = new ArrayList<Person>();
+        int index = 0;
         for (HashMap.Entry<filtersData.filterType, String> entry : filters.entrySet()) {
             switch (entry.getKey()) {
                 case first_char_filter:
                     if (entry.getValue().length() != 0)
-                        query += "first_char == '" + entry.getValue() + "' ";
+                        if (index == 0) {
+                            index++;
+                            query += "first_char == '" + entry.getValue() + "' ";
+                        } else {
+                            query += "and first_char == '" + entry.getValue() + "' ";
+                        }
                     break;
                 case native_place_modern_filter:
                     if (entry.getValue().length() != 0)
-                        query += "now_place == '" + entry.getValue() + "' ";
+                        if (index == 0) {
+                            index++;
+                            query += "now_place == '" + entry.getValue() + "' ";
+                        } else {
+                            query += "and now_place == '" + entry.getValue() + "' ";
+                        }
                     break;
                 case native_place_ancient_filter:
                     if (entry.getValue().length() != 0)
-                        query += "old_place == '" + entry.getValue() + "' ";
+                        if (index == 0) {
+                            index++;
+                            query += "old_place == '" + entry.getValue() + "' ";
+                        } else {
+                            query += "and old_place == '" + entry.getValue() + "' ";
+                        }
                     break;
                 case sex_filter:
                     if (entry.getValue().length() != 0)
-                        query += "sex == '" + entry.getValue() + "' ";
+                        if (index == 0) {
+                            index++;
+                            query += "sex == '" + entry.getValue() + "' ";
+                        }
+                        else {
+                            query += "and sex == '" + entry.getValue() + "' ";
+                        }
                     break;
                 case camp_filter:
                     if (entry.getValue().length() != 0)
-                        query += "shili == " + entry.getValue() + " ";
+                        if (index == 0) {
+                            index++;
+                            query += "shili == '" + entry.getValue() + "' ";
+                        } else {
+                            query += "and shili == '" + entry.getValue() + "' ";
+                        }
                     break;
                 case name_filter:
                     if (entry.getValue().length() != 0)
-                        query += "name == '" + entry.getValue() + "' ";
+                        if (index == 0) {
+                            index++;
+                            query += "name == '" + entry.getValue() + "' ";
+                        } else {
+                            query += "and name == '" + entry.getValue() + "' ";
+                        }
                     break;
             }
         }
-        if (!query.equals("select * from mytable where ")) {
-            Cursor cursor = db.rawQuery(query,
-                    null);
-            while (cursor.moveToNext()) {
-                int id = cursor.getInt(0); //获取第一列的值,第一列的索引从0开始
-                String name = cursor.getString(1);
-                String sex = cursor.getString(2);
-                String first_char = cursor.getString(3);
-                String shili= cursor.getString(4);
-                String now_place = cursor.getString(5);
-                String old_place= cursor.getString(6);
-                int life = cursor.getInt(7);
-                String description = cursor.getString(8);
-                String picture = cursor.getString(9);
-                Person person = new Person(first_char, name, shili, sex, old_place,
-                        now_place, life, picture, description);
-                result.add(person);
-            }
-            cursor.close();
-            db.close();
+        if (query.equals("select * from " + TABLE_NAME + " where ")){
+            query = "select * from " + TABLE_NAME;
+
         }
+        Cursor cursor = db.rawQuery(query,
+                null);
+        while (cursor.moveToNext()) {
+            String name = cursor.getString(0);
+            String sex = cursor.getString(1);
+            String first_char = cursor.getString(2);
+            String shili= cursor.getString(3);
+            String now_place = cursor.getString(4);
+            String old_place= cursor.getString(5);
+            int life = cursor.getInt(6);
+            String description = cursor.getString(7);
+            String picture = cursor.getString(8);
+            Person person = new Person(first_char, name, shili, sex, old_place,
+                    now_place, life, picture, description);
+            result.add(person);
+        }
+        cursor.close();
+        db.close();
         return result;
     }
 }
